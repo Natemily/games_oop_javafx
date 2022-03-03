@@ -21,10 +21,10 @@ public final class Logic {
     }
 
     private boolean free(Cell[] steps) throws OccupiedCellException {
-        for (int i = 0; i < steps.length; i++) {
-            for (int j = 0; j < figures.length; j++) {
-                if (steps[i].equals(figures[j].position())) {
-                    throw new IllegalArgumentException("Ячейки заняты");
+        for (Cell step : steps) {
+            for (Figure figure : figures) {
+                if (figure.position() != null && step.equals(figure.position())) {
+                    throw new OccupiedCellException("Ячейки заняты");
                 }
             }
         }
